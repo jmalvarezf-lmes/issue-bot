@@ -17,7 +17,6 @@
 package io.spring.issuebot;
 
 import org.springframework.boot.context.properties.ConfigurationProperties;
-import org.springframework.boot.context.properties.NestedConfigurationProperty;
 
 /**
  * {@link ConfigurationProperties} for connecting to GitHub.
@@ -32,7 +31,7 @@ public class GitHubProperties {
 	private String password;
 
 	public String getUsername() {
-		return username;
+		return this.username;
 	}
 
 	public void setUsername(String username) {
@@ -40,7 +39,7 @@ public class GitHubProperties {
 	}
 
 	public String getPassword() {
-		return password;
+		return this.password;
 	}
 
 	public void setPassword(String password) {

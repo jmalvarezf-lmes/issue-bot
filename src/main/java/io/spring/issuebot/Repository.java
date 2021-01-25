@@ -69,7 +69,7 @@ public class Repository {
 	}
 
 	public String getLabelToAvoidTriage() {
-		return labelToAvoidTriage;
+		return this.labelToAvoidTriage;
 	}
 
 	public void setLabelToAvoidTriage(String labelToAvoidTriage) {

@@ -46,4 +46,5 @@ public class GitHubProperties {
 	public void setPassword(String password) {
 		this.password = password;
 	}
+
 }

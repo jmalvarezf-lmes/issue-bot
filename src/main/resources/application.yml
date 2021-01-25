@@ -30,3 +30,8 @@ issuebot:
     close_comment: >
       Closing due to lack of requested feedback. If you would like us to look at this
       issue, please provide the requested information and we will re-open the issue.
+
+management:
+  endpoint:
+    health:
+      show-details: always

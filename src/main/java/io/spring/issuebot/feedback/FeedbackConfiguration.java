@@ -42,7 +42,7 @@ class FeedbackConfiguration {
 			MonitoringProperties monitoringProperties, FeedbackProperties feedbackProperties,
 			List<IssueListener> issueListener) {
 		return new FeedbackIssueListener(gitHub, feedbackProperties.getRequiredLabel(),
-				monitoringProperties.getRepositories(), gitHubProperties.getCredentials().getUsername(),
+				monitoringProperties.getRepositories(), gitHubProperties.getUsername(),
 				new StandardFeedbackListener(gitHub, feedbackProperties.getProvidedLabel(),
 						feedbackProperties.getRequiredLabel(), feedbackProperties.getReminderLabel(),
 						feedbackProperties.getReminderComment(), feedbackProperties.getCloseComment(), issueListener));

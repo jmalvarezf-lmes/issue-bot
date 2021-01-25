@@ -18,6 +18,7 @@ package io.spring.issuebot.triage;
 
 import io.spring.issuebot.Repository;
 import io.spring.issuebot.github.Issue;
+import io.spring.issuebot.github.Label;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -35,7 +36,11 @@ final class LabelledTriageFilter implements TriageFilter {
 	public boolean triaged(Repository repository, Issue issue) {
 		if (issue.getLabels() != null && !issue.getLabels().isEmpty()) {
 			log.debug("{} has been triaged. It has been labelled.", issue);
-			return true;
+			for (Label label : issue.getLabels()) {
+				if (label.getName().equals(repository.getLabelToAvoidTriage())) {
+					return true;
+				}
+			}
 		}
 		return false;
 	}

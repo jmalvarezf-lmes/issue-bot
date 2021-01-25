@@ -27,48 +27,23 @@ import org.springframework.boot.context.properties.NestedConfigurationProperty;
 @ConfigurationProperties(prefix = "issuebot.github")
 public class GitHubProperties {
 
-	@NestedConfigurationProperty
-	private Credentials credentials = new Credentials();
+	private String username;
 
-	public Credentials getCredentials() {
-		return this.credentials;
+	private String password;
+
+	public String getUsername() {
+		return username;
 	}
 
-	public void setCredentials(Credentials credentials) {
-		this.credentials = credentials;
+	public void setUsername(String username) {
+		this.username = username;
 	}
 
-	/**
-	 * Configuration for the credentials used to authenticate with GitHub.
-	 */
-	public static class Credentials {
-
-		/**
-		 * The username used for authentication with GitHub.
-		 */
-		private String username;
-
-		/**
-		 * The password used for authentication with GitHub.
-		 */
-		private String password;
-
-		public String getUsername() {
-			return this.username;
-		}
-
-		public void setUsername(String username) {
-			this.username = username;
-		}
-
-		public String getPassword() {
-			return this.password;
-		}
-
-		public void setPassword(String password) {
-			this.password = password;
-		}
-
+	public String getPassword() {
+		return password;
 	}
 
+	public void setPassword(String password) {
+		this.password = password;
+	}
 }

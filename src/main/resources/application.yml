@@ -6,6 +6,7 @@ issuebot:
     repositories:
       - organization: adeo
         name: lmes-devops-requests
+        label_to_avoid_triage: "triaged"
         collaborators:
           - tfernandez-lmes
           - jmalvarezf-lmes

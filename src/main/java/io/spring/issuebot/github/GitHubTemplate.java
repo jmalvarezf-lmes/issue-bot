@@ -28,6 +28,8 @@ import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
 
+import com.fasterxml.jackson.databind.DeserializationFeature;
+import com.fasterxml.jackson.databind.ObjectMapper;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -84,6 +86,19 @@ public class GitHubTemplate implements GitHubOperations {
 		this.linkParser = linkParser;
 	}
 
+	static ObjectMapper createCustomObjectMapper() {
+		ObjectMapper objectMapper = new ObjectMapper();
+		objectMapper.configure(DeserializationFeature.ACCEPT_EMPTY_ARRAY_AS_NULL_OBJECT, true);
+		objectMapper.configure(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES, false);
+		return objectMapper;
+	}
+
+	static MappingJackson2HttpMessageConverter createMappingJacksonHttpMessageConverter() {
+		MappingJackson2HttpMessageConverter converter = new MappingJackson2HttpMessageConverter();
+		converter.setObjectMapper(createCustomObjectMapper());
+		return converter;
+	}
+
 	static RestTemplate createDefaultRestTemplate(String username, String password,
 			RateLimitInterceptor rateLimitInterceptor) {
 		RestTemplate rest = new RestTemplate();
@@ -105,6 +120,7 @@ public class GitHubTemplate implements GitHubOperations {
 		rest.setInterceptors(
 				Arrays.asList(new BasicAuthorizationInterceptor(username, password), rateLimitInterceptor));
 		rest.setMessageConverters(Collections.singletonList(new ErrorLoggingMappingJackson2HttpMessageConverter()));
+		rest.getMessageConverters().add(0, createMappingJacksonHttpMessageConverter());
 		return rest;
 	}
 

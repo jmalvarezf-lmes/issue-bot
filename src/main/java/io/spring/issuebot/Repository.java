@@ -37,6 +37,8 @@ public class Repository {
 	 */
 	private String name;
 
+	private String labelToAvoidTriage;
+
 	/**
 	 * The names of the repository's collaborators.
 	 */
@@ -64,6 +66,14 @@ public class Repository {
 
 	public void setCollaborators(List<String> collaborators) {
 		this.collaborators = collaborators;
+	}
+
+	public String getLabelToAvoidTriage() {
+		return labelToAvoidTriage;
+	}
+
+	public void setLabelToAvoidTriage(String labelToAvoidTriage) {
+		this.labelToAvoidTriage = labelToAvoidTriage;
 	}
 
 	@Override

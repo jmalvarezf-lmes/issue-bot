@@ -44,8 +44,8 @@ public class IssueBotApplication {
 
 	@Bean
 	GitHubTemplate gitHubTemplate(GitHubProperties gitHubProperties) {
-		return new GitHubTemplate(gitHubProperties.getCredentials().getUsername(),
-				gitHubProperties.getCredentials().getPassword(), new RegexLinkParser());
+		return new GitHubTemplate(gitHubProperties.getUsername(),
+				gitHubProperties.getPassword(), new RegexLinkParser());
 	}
 
 	@Bean
